@@ -5,7 +5,7 @@ invert_2D() top_cutout_2D();
 
 module top_cutout_2D()
 {
-    translate(plate_size[1]*y)
+    translate(layout_pos+plate_size[1]*y)
     outset(r=0.5, $fn=10)
     for (sw = switch_info) {
         pos = sw[0];

@@ -4,6 +4,7 @@ use <top_cutout.scad>
 
 difference()
 {
+    translate(-layout_pos)
     top_cutout_2D();
     plate_2D();
 }
@@ -15,9 +16,11 @@ module stabil() {
     }
 }
 module switch() {
-    square(0.55*inch, true);
-    mirrored(x) mirrored(y)
-    translate(0.1972/2*inch*y) square([0.6140/2, (0.55-0.1972)/2]*inch);
+    hole_x = 15.5;
+    hole_y = 12.8; 
+    drill_d = 1.5;
+    square([hole_x, hole_y], true);
+    mirrored(x) translate((hole_x-drill_d)/2*x) square([drill_d, hole_y+drill_d], true);
 }
 
 module plate_cutout(u) {
