@@ -21,7 +21,7 @@ front_height = 14;
 roundness = 10;
 
 // size of material to carve
-block_size = [330, 130, 34];
+block_size = [297, 210, 20];
 
 // roundness of top of case
 R = 400;
