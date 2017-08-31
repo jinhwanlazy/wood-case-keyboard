@@ -28,3 +28,5 @@ _autosave-*
 *.csv
 
 *.pdf
+
+model/params.scad
