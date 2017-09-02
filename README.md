@@ -27,7 +27,7 @@ toolchain to generate a keyboard case.
 - python3
 - [python-shapely](https://pypi.python.org/pypi/Shapely)
 - [Openscad](http://www.openscad.org/) - nightly version is recommended
-- [OskarLinde/scad-utils](https://github.com/OskarLinde/scad-utils)
+- [openscad/scad-utils](https://github.com/openscad/scad-utils)
 - [openscad/list-comprehension-demos](https://github.com/openscad/list-comprehension-demos)
 
 # Build
