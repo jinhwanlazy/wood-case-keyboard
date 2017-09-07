@@ -9,18 +9,30 @@ difference()
     plate_2D();
 }
 
+module ear(hole_x, hole_y, drill_d) {
+    $fn=17;
+    translate([hole_x, hole_y]/2-[1, 1]*drill_d/2)
+    hull() {
+        circle(d=drill_d);
+        translate([1, 1]*drill_d/2) circle(d=drill_d);
+    }
+}
+
 module stabil() {
+    e = 0.1;
     translate([0, -0.03]*inch) {
-        square([0.13, 0.55]*inch, true);
-        mirrored(y) translate((0.55*inch-2)/2*y) square([0.13*inch+1, 2], true);
+        square([0.13, 0.55]*inch + [e, e], true);
+        mirrored(x) mirrored(y) ear(0.13*inch+e, 0.55*inch+e, 1+e);
     }
 }
 module switch() {
-    hole_x = 15.5;
-    hole_y = 12.8; 
-    drill_d = 1.5;
+    e = 0.1;
+    hole_x = 15.5 + e;
+    hole_y = 12.8 + e; 
+    drill_d = 1.0 + e;
     square([hole_x, hole_y], true);
-    mirrored(x) translate((hole_x-drill_d)/2*x) square([drill_d, hole_y+drill_d], true);
+    mirrored(x) mirrored(y) ear(hole_x, hole_y, drill_d);
+//    mirrored(x) translate((hole_x-drill_d)/2*x) square([drill_d, hole_y+drill_d], true);
 }
 
 module plate_cutout(u) {
