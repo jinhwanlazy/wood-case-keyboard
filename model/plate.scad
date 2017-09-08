@@ -1,11 +1,12 @@
 include <common.scad>
 use <top_cutout.scad>
+use <scad-utils/morphology.scad>
 /* use <base.scad> */
 
 difference()
 {
     translate(-layout_pos)
-    top_cutout_2D();
+    inset(d=0.25, $fn=17) top_cutout_2D();
     plate_2D();
 }
 
@@ -48,6 +49,12 @@ module plate_cutout(u) {
     mirrored(x) translate(-A/2*inch*x) stabil(); 
 }
 
+module mounting_holes() {
+    for (pos = mounting_hole_pos) {
+        translate(pos) circle(d=5.8, $fn=36);
+    }
+}
+
 module plate_2D()
 {
     translate(plate_size[1]*y)
@@ -58,5 +65,7 @@ module plate_2D()
         row = sw[3];
         translate(pos) rotate(rot) plate_cutout(unit);
     }
+    mounting_holes();
+    echo(mounting_hole_pos);
 }
 

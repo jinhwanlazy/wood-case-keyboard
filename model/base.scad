@@ -7,5 +7,5 @@ render() base();
 
 module base()
 {
-    cube(block_size);
+    linear_extrude(height=block_size[2]) block_profile();
 }
