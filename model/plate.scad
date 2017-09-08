@@ -36,8 +36,7 @@ module switch() {
 }
 
 module plate_cutout(u) {
-    if (u == 6)  translate(0.5*unit*x) switch();
-    else         switch();
+    switch();
 
     A = (u == 6)                ? 3.75 :
         (2.00 <= u && u < 3.00) ? 0.94 :
