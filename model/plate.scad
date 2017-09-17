@@ -32,7 +32,7 @@ module stabil(A=0.94) {
     e = 0.1;
     mirrored(x)
     {
-        translate(-0.18*inch/2*y) square([A/2, 0.18]*inch);
+        translate(-0.1*inch*y) square([A/2, 0.22]*inch);
         translate(A/2*inch*x)
         {
             translate([-0.262/2, -0.26]*inch)
