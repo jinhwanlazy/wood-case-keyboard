@@ -36,7 +36,7 @@ module stabil(A=0.94) {
         translate(A/2*inch*x)
         {
             translate([-0.262/2, -0.26]*inch)
-            square_with_ear([0.262, 0.484]*inch);
+            square_with_ear([0.262, 0.484]*inch+e*x);
             translate([-0.12/2, -0.306]*inch)
             square_with_ear([0.12, 0.3]*inch);
             translate([0, -0.02]*inch)
@@ -47,11 +47,8 @@ module stabil(A=0.94) {
 }
 
 module switch() {
-    e = 0.1;
-    hole_x = 15.5 + e;
-    hole_y = 12.8 + e; 
-    drill_d = 1.0 + e;
-    square_with_ear([15.5+e, 12.8+e], true, drill_d+e);
+    e = 0.05;
+    square_with_ear([15.5+e, 12.8+e], true, 1.0+e);
 }
 
 module plate_cutout(u) {
