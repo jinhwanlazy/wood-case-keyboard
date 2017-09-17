@@ -14,11 +14,11 @@ lip_width = (block_size[0]-plate_size[0]) / 2;
 layout_pos = [lip_width, block_size[1] - plate_size[1] - lip_width];
 
 mounting_hole_pos = [
-    [0.25*unit+2.5, 1.5*unit],
-    [14.5*unit-2.5, 3.5*unit],
+    [0.375*unit, 1.5*unit],
+    [14.375*unit, 3.5*unit],
     [9.5*unit, 0.5*unit],
     [3.5*unit, 0.5*unit],
-    [3.25*unit, 4*unit],
+    [3.75*unit, 4*unit],
     [8.625*unit, 3*unit],
 ];
 
