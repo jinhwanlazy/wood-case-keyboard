@@ -18,7 +18,7 @@ mounting_hole_pos = [
     [14.375*unit, 3.5*unit],
     [9.5*unit, 0.5*unit],
     [3.5*unit, 0.5*unit],
-    [3.75*unit, 4*unit],
+    [4.0*unit, 4*unit],
     [8.625*unit, 3*unit],
 ];
 
