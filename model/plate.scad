@@ -10,21 +10,28 @@ difference()
     plate_2D();
 }
 
-module ear(hole_x, hole_y, drill_d) {
+module ear(hole_x, hole_y, drill_d, dir="diag") {
     $fn=17;
-    translate([hole_x, hole_y]/2-[1, 1]*drill_d/2)
-    hull() {
+    hull()
+    {
+        translate([hole_x, hole_y]/2 - [1, 1] * drill_d/2)
         circle(d=drill_d);
-        translate([1, 1]*drill_d/2) circle(d=drill_d);
+        
+        translate([hole_x, hole_y]/2)
+        {
+            if (dir == "hori") translate(-y*drill_d/2) circle(d=drill_d); 
+            else if (dir == "vert") translate(-x*drill_d/2) circle(d=drill_d);
+            else circle(d=drill_d);
+        }
     }
 }
 
-module square_with_ear(size=[1, 1], center=false, drill_d=1.1)
+module square_with_ear(size=[1, 1], center=false, drill_d=1.1, dir="diag")
 {
     translate(size / 2 * (center ? 0 : 1))
     {
         square(size, true);
-        mirrored(x) mirrored(y) ear(size[0], size[1], drill_d);
+        mirrored(x) mirrored(y) ear(size[0], size[1], drill_d, dir);
     }
 }
 
@@ -38,9 +45,9 @@ module stabil(A=0.94) {
             translate([-0.262/2, -0.26]*inch)
             square_with_ear([0.262, 0.484]*inch+e*x);
             translate([-0.12/2, -0.306]*inch)
-            square_with_ear([0.12, 0.3]*inch);
+            square_with_ear([0.12, 0.3]*inch, dir="vert");
             translate([0, -0.02]*inch)
-            square_with_ear([0.156, 0.11]*inch);
+            square_with_ear([0.156, 0.11]*inch, dir="hori");
 
         }
     }
@@ -48,7 +55,7 @@ module stabil(A=0.94) {
 
 module switch() {
     e = 0.05;
-    square_with_ear([15.5+e, 12.8+e], true, 1.0+e);
+    square_with_ear([15.5+e, 12.8+e], true, 1.0+e, "vert");
 }
 
 module plate_cutout(u) {
