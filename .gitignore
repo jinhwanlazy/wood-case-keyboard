@@ -1,4 +1,5 @@
 *.dxf
+model/params.scad
 
 *.tar.gz
 pycam*/
